@@ -1,0 +1,39 @@
+query testA
+{
+    company
+    {
+        projects {
+            items {
+                ...projectInfos
+            }
+        }
+    }
+}
+
+query testB
+{
+    company
+    {
+        tasks {
+            items {
+                ...taskInfo
+            }
+        }
+    }
+}
+
+fragment projectInfos on ProjectGraph {
+    iD
+    projectName
+    startDate
+    endDate
+        projetTasks {
+            ...taskInfo
+        }
+}
+
+fragment taskInfo on ProjetTaskGraph {
+    id
+    name
+    startDate
+}
